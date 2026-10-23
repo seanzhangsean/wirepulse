@@ -1,0 +1,33 @@
+#!/bin/sh /etc/rc.common
+# WirePulse OpenWrt procd service script
+
+USE_PROCD=1
+START=95
+STOP=10
+
+PROG="/usr/bin/wirepulse"
+CONFIG_FILE="/etc/wirepulse/wirepulse.json"
+
+start_service() {
+	local enabled
+	config_load wirepulse
+	config_get_bool enabled main enabled 0
+
+	[ "$enabled" -eq 1 ] || return 0
+
+	procd_open_instance
+	procd_set_param command "$PROG" serve --config "$CONFIG_FILE"
+	procd_set_param respawn 3600 5 0
+	procd_set_param stdout 1
+	procd_set_param stderr 1
+	procd_close_instance
+}
+
+stop_service() {
+	killall wirepulse 2>/dev/null
+}
+
+reload_service() {
+	stop
+	start
+}

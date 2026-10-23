@@ -1,0 +1,11 @@
+config wirepulse 'main'
+	option enabled '1'
+	option listen_address '0.0.0.0'
+	option listen_port '9182'
+	option poll_interval '5'
+	list interfaces 'wg0'
+	option log_level 'INFO'
+
+config peer_alias
+	option public_key 'examplePublicKeyHere1234567890abcdef='
+	option alias 'office-gateway'
