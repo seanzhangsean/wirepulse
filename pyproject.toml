@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wirepulse"
+version = "0.2.1"
+description = "Lightweight WireGuard telemetry daemon, health checker, and Prometheus exporter for edge gateways & OpenWrt"
+readme = "README.md"
+authors = [
+    { name = "Sean Zhang", email = "260912774+seanzhangsean@users.noreply.github.com" }
+]
+license = { text = "MIT" }
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: System :: Networking :: Monitoring",
+]
+keywords = ["wireguard", "openwrt", "prometheus", "exporter", "telemetry", "vpn", "monitoring"]
+requires-python = ">=3.9"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "flake8>=6.0.0",
+]
+
+[project.scripts]
+wirepulse = "wirepulse.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/seanzhangsean/wirepulse"
+Documentation = "https://github.com/seanzhangsean/wirepulse#readme"
+Issues = "https://github.com/seanzhangsean/wirepulse/issues"
+Repository = "https://github.com/seanzhangsean/wirepulse.git"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --strict-markers"
