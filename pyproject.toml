@@ -47,3 +47,8 @@ Repository = "https://github.com/seanzhangsean/wirepulse.git"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-v --strict-markers"
+
+[tool.setuptools.packages.find]
+include = ["wirepulse*"]
+exclude = ["openwrt*", "tests*", "docs*"]
+
